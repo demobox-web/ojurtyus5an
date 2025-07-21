@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>アクセスログページ</title>
+</head>
+<body>
+  <h1>こんにちは！</h1>
+  <script>
+    // アクセス情報を取得してログAPIに送信（まだAPIは仮URL）
+    fetch("https://your-log-api.onrender.com/log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        time: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer,
+        screen: `${screen.width}x${screen.height}`
+      })
+    }).catch(err => console.error("ログ送信エラー", err));
+  </script>
+</body>
+</html>
